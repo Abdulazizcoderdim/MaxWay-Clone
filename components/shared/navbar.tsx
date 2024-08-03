@@ -2,6 +2,12 @@
 
 import { routesNav } from '@/constants'
 import { cn } from '@/lib/utils'
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 import { ChevronDown, MapPin, Menu, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -79,7 +85,12 @@ const Navbar = () => {
           </div>
 
           <div className="max-lg:hidden">
-            <span>user</span>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           </div>
         </div>
       </div>
