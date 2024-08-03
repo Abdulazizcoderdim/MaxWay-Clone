@@ -11,11 +11,9 @@ const config = {
   prefix: "",
   theme: {
     container: {
-      center: true,
       padding: {
         DEFAULT: "1rem",
-        "sm": '1rem',
-        "2xl": "11rem",
+        "2xl": "12rem",
       }
     },
     extend: {

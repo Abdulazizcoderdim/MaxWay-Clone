@@ -6,12 +6,13 @@ import { ChevronDown, MapPin, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import MaxWidth from './MaxWidth'
 import ModalLocation from './modal-loc'
 
 const Navbar = () => {
   const pathname = usePathname()
   return (
-    <div className="container py-4 border">
+    <MaxWidth className="py-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-x-10">
           <Image src={'/logo.webp'} alt="Logo" width={45} height={45} />
@@ -44,9 +45,9 @@ const Navbar = () => {
                   <MapPin width={25} height={25} />
                 </span>
                 <p className="max-w-52 text-xs">
-                  Yetkazib berish yoki Olib ketish{' '}
+                  Delivery or Takeaway{' '}
                   <span className="text-[#51267d]">
-                    Qabul qilib olish turini tanlang
+                    Select the type of reception
                   </span>
                 </p>
               </div>
@@ -75,7 +76,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </MaxWidth>
   )
 }
 
