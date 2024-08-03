@@ -85,12 +85,7 @@ const Navbar = () => {
           </div>
 
           <div className="max-lg:hidden">
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+            <Link href="/sign-up">Sign in</Link>
           </div>
         </div>
       </div>
