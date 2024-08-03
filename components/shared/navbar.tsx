@@ -1,0 +1,82 @@
+'use client'
+
+import { routesNav } from '@/constants'
+import { cn } from '@/lib/utils'
+import { ChevronDown, MapPin, ShoppingCart } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import ModalLocation from './modal-loc'
+
+const Navbar = () => {
+  const pathname = usePathname()
+  return (
+    <div className="container py-4 border">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-x-10">
+          <Image src={'/logo.webp'} alt="Logo" width={45} height={45} />
+
+          <ul className="flex items-center gap-x-7">
+            {routesNav.map((route, i) => {
+              const isActive = route.path === pathname
+              return (
+                <li
+                  className="text-black font-normal hover:font-medium transition"
+                  key={i}
+                >
+                  <Link
+                    className={cn(isActive && 'font-medium')}
+                    href={route.path}
+                  >
+                    {route.title}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <ModalLocation
+            triggerContent={
+              <div className="flex items-center cursor-pointer gap-x-2">
+                <span className="p-2 text-[#51267d] rounded-full bg-[#F1EFF4]">
+                  <MapPin width={25} height={25} />
+                </span>
+                <p className="max-w-52 text-xs">
+                  Yetkazib berish yoki Olib ketish{' '}
+                  <span className="text-[#51267d]">
+                    Qabul qilib olish turini tanlang
+                  </span>
+                </p>
+              </div>
+            }
+          />
+
+          <div className="py-1 px-2 cursor-pointer space-x-2 rounded-full flex items-center bg-[#F1EFF4]">
+            <Image
+              src={'https://maxway.uz/images/uz.svg'}
+              alt="lang"
+              width={20}
+              height={20}
+            />
+            <ChevronDown width={20} height={20} />
+          </div>
+
+          <div className="flex cursor-pointer items-center gap-x-3">
+            <span className="py-1 px-2 rounded-full bg-[#F1EFF4] text-[#51267d] ">
+              <ShoppingCart width={20} height={20} />
+            </span>
+            <span>0</span>
+          </div>
+
+          <div>
+            <span>user</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
