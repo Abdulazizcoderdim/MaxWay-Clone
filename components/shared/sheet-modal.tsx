@@ -7,6 +7,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import SelectModal from './select'
 
 const SheetModal = () => {
   return (
@@ -17,12 +18,12 @@ const SheetModal = () => {
         </div>
       </SheetTrigger>
       <SheetContent side={'left'} className="w-full">
-        <SheetHeader>
+        <SheetHeader className='p-5'>
           <SheetTitle>Menyu</SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </SheetDescription>
+          <div className='space-y-4 w-full'>
+            <SelectModal/>
+            <h1>Kirish</h1>
+          </div>
         </SheetHeader>
       </SheetContent>
     </Sheet>
