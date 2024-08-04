@@ -2,18 +2,14 @@
 
 import { routesNav } from '@/constants'
 import { cn } from '@/lib/utils'
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import { ChevronDown, MapPin, Menu, ShoppingCart } from 'lucide-react'
+import { ChevronDown, MapPin, ShoppingCart, UserRound } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import MaxWidth from './MaxWidth'
+import AuthLocation from './modal-auth'
 import ModalLocation from './modal-loc'
+import SheetModal from './sheet-modal'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -21,10 +17,8 @@ const Navbar = () => {
     <MaxWidth className="pt-4 max-lg:border-b">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-x-10">
-          <div className='flex items-center gap-x-4'>
-            <div className="max-lg:block hidden">
-              <Menu />
-            </div>
+          <div className="flex items-center gap-x-4">
+            <SheetModal />
             <Image src={'/logo.webp'} alt="Logo" width={45} height={45} />
           </div>
 
@@ -78,14 +72,20 @@ const Navbar = () => {
           </div>
 
           <div className="flex cursor-pointer items-center gap-x-3">
-            <span className="py-1 px-2 rounded-full bg-[#F1EFF4] text-[#51267d] ">
+            <div className="p-2 rounded-full bg-[#F1EFF4] text-[#51267d] ">
               <ShoppingCart width={20} height={20} />
-            </span>
+            </div>
             <span>0</span>
           </div>
 
           <div className="max-lg:hidden">
-            <Link href="/sign-up">Sign in</Link>
+            <AuthLocation
+              triggerContent={
+                <div className="p-2 cursor-pointer rounded-full bg-[#F1EFF4] text-[#51267d] ">
+                  <UserRound width={20} height={20} />
+                </div>
+              }
+            />
           </div>
         </div>
       </div>
